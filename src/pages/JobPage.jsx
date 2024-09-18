@@ -2,7 +2,6 @@ import { useParams, useLoaderData, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Spinner from "../components/Spinner";
 
 const JobPage = ({ deleteJob }) => {
     const navigate = useNavigate();
