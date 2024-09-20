@@ -51,6 +51,7 @@ const updateJob = asyncHandler(async (req, res) => {
     const jobData = {
         title: req.body.title,
         type: req.body.type,
+        description: req.body.description,
         location: req.body.location,
         salary: req.body.salary,
         company: req.body.company
