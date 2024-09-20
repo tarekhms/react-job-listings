@@ -2,6 +2,7 @@
   "name": "react-job-listings",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/server.js",
     "server": "node --watch --env-file=.env backend/server.js",
