@@ -5,6 +5,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js';
 import jobRoutes from './routes/jobRoutes.js';
 import connectDB from './config/db.js';
+import proxy from 'express-http-proxy';
 
 connectDB();
 
@@ -17,6 +18,27 @@ app.use(cookieParser());
 
 app.use('/api/jobs/', jobRoutes);
 app.use('/api/users/', userRoutes);
+
+// app.use('/test1/*', proxy('localhost:5000/', {
+//     filter: function (req, res) {
+//         return req.method == 'GET';
+//     }
+// }));
+// app.use('/test1', proxy('localhost:5000/', {
+//     filter: function (req, res) {
+//         return req.method == 'GET';
+//     }
+// }));
+
+app.use('/test/', proxy('localhost:5000', {
+    proxyReqPathResolver: function (req) {
+        console.log(req.url);
+    }
+}));
+
+// app.use('/test/', proxy('localhost:5000'));
+app.get('/test', (req, res) => res.send('test'));
+app.get('/test2', (req, res) => res.send('test2'));
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
