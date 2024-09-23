@@ -30,15 +30,15 @@ app.use('/api/users/', userRoutes);
 //     }
 // }));
 
-app.use('/test/', proxy('localhost:5000', {
-    proxyReqPathResolver: function (req) {
-        console.log(req.url);
-    }
-}));
+// app.use('/test/', proxy('localhost:5000', {
+//     proxyReqPathResolver: function (req) {
+//         console.log(req.url);
+//     }
+// }));
 
 // app.use('/test/', proxy('localhost:5000'));
-app.get('/test', (req, res) => res.send('test'));
-app.get('/test2', (req, res) => res.send('test2'));
+// app.get('/test', (req, res) => res.send('test'));
+// app.get('/test2', (req, res) => res.send('test2'));
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
